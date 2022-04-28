@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<title>Produits</title>
+<div class="row justify-content-center">
+    <div class="col-sm-12">
+        <div class="card text-left">
+            <h1 class="card-header">Produits</h1>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="text-primary">
+                          <tr>
+                            <th scope="col" class="text-left">Produits</th>
+                            <th scope="col" class="text-left">Catégorie</th>
+                            <th scope="col" class="text-left">Fournisseur</th>
+                            <!-- mettre sous condtion l'affichage de cette ligne -->
+                            <th scope="col" class="text-right">Prix unitaire</th>
+                          </tr>
+                          <tbody>
+                              <!-- ici le contenu des tables-->
+                              {% for index, product in products.iterrows %}
+                              <tr>
+                                  <td class="text-left">
+                                      <a href="{% url 'productsDetails' product.id %}">{{product.name}}</a>
+                                  </td>
+                                  <td>
+                                      <a class="text-reset" href="{% url 'categoriesDetails' product.category_id %}">{{ product.category }}</a>
+                                  </td>
+                                  <td>
+                                      <a class="text-reset" href="{% url 'suppliersDetails' product.supplier_id %}">{{ product.supplier }}</a>
+                                  </td>
+                                  <td class="text-right">{{ product.price|floatformat:2 }} €</td>
+                              </tr>
+                              {% endfor %}
+
+                          </tbody>
+                        </thead>
+                    </table>    
+                </div>    
+            </div>
+        </div>    
+    </div>
+</div>
+<div class="row justify-content-end">
+    <a href="{% url 'productsCreate'%}" class="btn btn-secondary">AJOUTER UN PRODUIT</a>
+</div>
+{% endblock %}

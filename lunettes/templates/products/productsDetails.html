@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<title>Page Produit</title>
+
+<!-- Title Card -->
+<div class="row">
+    <div class="col-12">
+        <div class="card col-sm-12" style="padding-top: 0.5em; padding-bottom: 0.5em;">
+            <div class="row">
+                <div class="col-xs-12 col-sm-9">
+                    <H2 class="card-header" style="position:relative ; margin-top:-0.2em">
+                        <a href="javascript:history.back()" class="text-muted" style="position: relative; bottom: -4px" >
+                            <i class="nc-icon nc-minimal-left"></i>
+                        </a>
+                        {{product.name}}
+                    </H2>
+                </div>
+                <div class="col-xs-12 col-sm-3 justify-content-right">
+                    <a href="#" class="btn btn-primary col-sm-12">COMMANDER CE PRODUIT</a>
+                </div>    
+            </div>
+        </div>    
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col col-sm-12 col-lg-6">
+        <div class="card col-12" style="height:30em">
+            <div class="card-body">
+                <h1 class="text-center text-danger" style="font-size:10em">Graphs</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col col-sm-12 col-lg-6">
+        <div class="card col-12" style="height:30em">
+            <div class="card-body">
+                <div class="row justify-content-center">
+                    <img class='card-img-top' style="height:300px ; width:300px" src="{% static 'img/image_uploader.png' %}" alt="your image" />
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>
+
+<!-- Values Cards -->
+<div class="row">
+    <div class="col-12">
+        <div class="card col-sm-12" style="height: 20em">
+            <div class="card-header">
+                <h3 class="card-title">Infos</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">  
+                        <label>Nom du produit</label>
+                        <p>{{ product.name }}</p>
+                    
+                        <label>Quantité par lot</label>
+                        <p>{{product.quantity_by_lot}}</p>    
+
+                    </div>
+                    <div class="col">
+                        <label>Abréviation</label>
+                        {% if prod.abreviation != '' and prod.abrevaition != None %}
+                        <p>{{prod.abreviation}}</p>
+                        {% else %}
+                        <p class="text-muted">abreviation</p>   
+                        {% endif %}
+        
+                        <label>Catégorie</label>
+                        <p>
+                            <a href="{% url 'categoriesDetails' category.id %}">
+                                {{ product.category }}
+                            </a>
+                        </p>    
+                    </div>
+                    <div class="col">
+                        <label>Fournisseur</label>
+                        <p>
+                            <a href="{% url 'suppliersDetails' product.supplier_id %}">{{ product.supplier}}</a>
+                        </p>
+        
+                        <label>Prix</label>
+                        <p>{{ product.price|floatformat:2 }} €</p>  
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+
+<!-- Boutons -->
+<div class="row">
+    <div class="col">
+        <div class="row">
+            <button type="button" class="btn btn-danger col-sm-12" data-toggle="modal" data-target="#exampleModalCenter">
+                SUPRPIMER
+            </button>
+                
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Supprimer {{ product.name }} ?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Voulez-vous vraiment supprimer ce produit ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary col" data-dismiss="modal">Fermer</button>
+                    <a href="{% url 'productsDelete' product.id %}" class="btn btn-danger col">SUPPRIMER</a>
+                </div>
+                </div>
+            </div>
+            </div>            
+        </div>
+    </div>
+    <div class="col">
+        <div class="row justify-content-end">
+            <a href="{% url 'productsModify' product.id %}" class="btn btn-secondary col-sm-12">MODIFIER</a>
+        </div>        
+    </div>
+    <div class="col">
+        <div class="row justify-content-end">
+            <a href="{% url 'productsCreate'%}" class="btn btn-primary col-sm-12">CRÉER UN PRODUIT</a>
+        </div>        
+    </div>
+</div>
+
+
+<!-- Button trigger modal -->
+
+{% endblock %}

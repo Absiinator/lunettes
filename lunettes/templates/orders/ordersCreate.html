@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <div class="card col-sm-12">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12 col-md-9">
+                    <H2 class="card-header" style="position:relative ; margin-top:-0.4em">
+                       Nouvelle Commande
+                    </H2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Values Cards -->
+<form action="" method="POST">{% csrf_token %}
+    <div class="row">
+        <div class="card col-sm-12">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Fournisseur</label>
+                            {{ form.supplier }}    
+                        </div>  
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Date</label>
+                            {{ form.date }}    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="card col-sm-12">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="row justify-content-center">
+                            <h3 class="text-muted">Nombre de Produits</h3>
+                        </div>
+                        <div class="row justify-content-center">
+                            <p class="text-success" style="font-size:2em">0</p>
+                        </div>
+                    </div>
+                    <div class="d-flex" style="height: 100px">
+                        <div class="vr"></div>
+                    </div>
+                    <div class="col">
+                        <div class="row justify-content-center">
+                            <h3 class="text-muted">Prix Total</h3>
+                        </div>
+                        <div class="row justify-content-center">
+                            <p style="font-size:2em">Value</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+    
+    <!-- products selections -->
+    <div class="row">
+        <div class="card col-sm-12">
+            <div class="card-header" style="position:relative; margin-top:-0.2em;">
+                <div class="row">
+                    <div class="col-sm-11">
+                        <h3 class="text-muted">Produits</h3>
+                    </div>
+                    <div class="col-sm-1">
+                        <a>
+                            <i class="nc-icon nc-simple-add" style="position:relative; bottom:-8px"></i>
+                        </a>
+                    </div>    
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="text-primary">
+                            <th class="text-left">
+                                Produit
+                            </th>
+                            <th>QTT en stock</th>
+                            <th>QTT à commander</th>
+                            <th>Prix unitaire</th>
+                            <th class="text-right">Prix</th>
+                        </thead>
+                        <tbody>
+                            <!-- Here goes the content -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- buttons -->
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row justify-content-left">
+                <a href="{% url 'orders' %}" class="btn btn-danger col-sm-12">ANNNULER</a>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row justify-content-right">
+                <a href="{% url 'orders' %}" class="btn btn-primary col-sm-12">CRÉER LA COMMANDE</a>
+            </div>
+        </div>
+    </div>     
+</form>
+
+<script>
+    const data = '{{products}}'
+    const rdata = JSON.parse(data.replace(/&quot;/g, '"'))
+    const input = document.getElementById('supplier-dropdown').options
+    let filteredArr = []
+
+    input.addEventListener('change', (e)=>{
+        console.log(input)
+        box.innerHTML = ""
+        filteredArr = rdata.filter(info=> info['supplier'].includes(e.target.value))
+        console.log(filteredArr)
+        if (filteredArr.length > 0){
+            filteredArr.map(info=>{
+                box.innerHTML += `<b>${info['name']}</b><br>`
+            })
+        } else {
+            box.innerHTML = "<b>No results found...</b>"
+        }
+    })
+</script>
+{% endblock %}

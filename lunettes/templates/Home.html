@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load dashtags %}
+{% block content %}
+
+<title>Tableau de Bord</title>
+<div class="row justify-content-center">
+    <div class="col-sm-12">
+        <div class="card text-left">
+            <h1 class="card-header">Tableau de Bord</h1>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="text-primary">
+                            <tr>
+                                <th scope="col" class="text-left">CATÉGORIES</th>
+
+                                {% for location in locations %}
+                                    <th scope="col" class="text-left">{{ location }}</th>
+                                {% endfor %}
+
+                                <th>TOTAL</th>
+                                <th>SEUIL</th>
+                                <th class="text-right">RECOMMANDER</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- ici le contenu des tables-->
+                            {% for index, row in dataframe.iterrows %}
+                            <tr class="{% if row.NeedsOrder == 'RECOMMANDER'%} text-danger font-weight-bold {% endif %}">
+                                <td class="text-left">
+                                    <a href="{% url 'categoriesDetails' row.id %}" class="text-reset">{{row.category}}</a></td>
+                                
+                                {% for location in locations %}
+                                    <td class="text-left">{{ row|list_key:location }}</td>
+                                {% endfor %}
+                                
+                                <td class="text-center">{{row.total}}</td>
+                                <td class="text-center">{{row.threshold}}</td>
+                                <td class='text-right'>{{row.NeedsOrder}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>    
+                </div>    
+            </div>
+        </div>    
+    </div>
+</div>
+<div class="row justify-content-end">
+    <a href="#" class="btn btn-primary">Modifier</a>
+</div>
+{% endblock %}

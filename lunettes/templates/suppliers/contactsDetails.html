@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<title>Contact fournisseur</title>
+<div class="row">
+    <div class="col-12">
+        <div class="card col-sm-12" style="padding-top: 0.5em; padding-bottom: 1em;">
+            <div class="row">
+                <div class="col-12">
+                    <H2 class="card-header" style="position:relative ; margin-top:-0.2em">
+                        <a href="{% url 'suppliersDetails' contact.supplier_link.id %}" class="text-muted" style="position: relative; bottom: -4px" >
+                            <i class="nc-icon nc-minimal-left"></i>
+                        </a>
+                        {{ contact.name }} {{ contact.surname }} de 
+                        <a class="text-reset" href="{% url 'suppliersDetails' contact.supplier_link.id %}">{{ contact.supplier_link.name }}</a>
+                    </H2>
+                </div>   
+            </div>
+        </div>    
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card col-sm-12">
+            <div class="card-body" style="margin-bottom:2em">
+                <div class="row">
+                    <div class="col-xs-2 col-sm-4">
+                        <label>Nom</label>
+                        <p>{{ contact.name }}</p> 
+                    </div>
+                    <div class="col-xs-2 col-sm-4">
+                        <label>Prénom</label>
+                        <p>{{ contact.surname }}</p>
+                    </div>
+                    <div class="col-xs-2 col-sm-4">
+                        <label>Fournisseur</label>
+                        <p>
+                            <a href="{% url 'suppliersDetails' contact.supplier_link.id %}">
+                                {{ contact.supplier_link.name }}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2 col-sm-4">
+                        <label>Numéro de téléphone</label>
+                        <p>{{contact.phone_number}}</p>
+                    </div>
+                    <div class="col-xs-2 col-sm-4">
+                        <label>Adresse Mail</label>
+                        <p>{{contact.email}}</p>
+                    </div>
+                    <div class="col-xs-2 col-sm-4">
+                        <label>Position</label>
+                        <p>{{contact.position}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class='row'>
+    <div class="col-12">
+        <div class="card col-12">
+            <div class="card-header">
+                <h3 class="card-title text-muted">Notes</h3>
+            </div>
+            <div class="card-body col-sm-12">
+                {% if notes.note != None and notes.note != ''%}
+                {{ notes.note }}
+                {% else %}
+                <p class="text-muteds">Notes...</p>
+                {% endif %}
+            </div>
+        </div>    
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="row">
+            <button type="button" class="btn btn-danger col-sm-12" data-toggle="modal" data-target="#exampleModalCenter">
+                SUPRPIMER
+            </button>
+                
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Supprimer {{ supplier.name }} ?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Voulez-vous vraiment supprimer ce fournisseur ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary col" data-dismiss="modal">Fermer</button>
+                    <a href="{% url 'contactsDelete' contact.id %}" class="btn btn-danger col">SUPPRIMER</a>
+                </div>
+                </div>
+            </div>
+            </div>            
+        </div>
+    </div>
+    <div class="col">
+        <div class="row justify-content-end">
+            <a href="{% url 'contactsModify' contact.id %}" class="btn btn-secondary col-sm-12">MODIFIER</a>
+        </div>        
+    </div>
+</div>
+{% endblock %}

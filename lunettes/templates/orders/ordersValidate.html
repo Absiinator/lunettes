@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card col-sm-12" style="padding-top: 0.5em; padding-bottom: 1em;">
+            <div class="row">
+                <div class="col-12">
+                    <H2 class="card-header" style="position:relative ; margin-top:-0.2em">
+                        <a href="{% url 'orders' %}" class="text-muted" style="position: relative; bottom: -4px" >
+                            <i class="nc-icon nc-minimal-left"></i>
+                        </a>
+                        Valider les quantités livrées
+                    </H2>
+                </div>   
+            </div>
+        </div>    
+    </div>
+</div>
+
+<!-- Values Cards -->
+<div class="row">
+    <div class="col-12">
+        <div class="card col-sm-12">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-4">  
+                        <label>Fournisseur</label>
+                        <p class="text-primary">Fournisseur test</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Date</label>
+                        <p class="text-muted">16 Mars 2022</p>   
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Statut</label>
+                        <p class="text-primary">Statut en cours</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- products selections -->
+<div class="row">
+    <div class="col-12">
+        <div class="card col-sm-12">
+            <div class="card-header" style="position:relative; margin-top:-0.2em;">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="text-muted">Produits</h3>
+                    </div>  
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="text-primary">
+                            <th class="text-left">
+                                Produit
+                            </th>
+                            <th>QTT commandé</th>
+                            <th>QTT reçue</th>
+                            <th class="text-right">Valider</th>
+                        </thead>
+                        <tbody>
+                            <!-- Here goes the content -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- buttons -->
+<div class="row">
+    <div class="col-sm-6">
+        <a href="{% url 'orders' %}" class="btn btn-danger col-sm-12">ANNNULER</a>
+    </div>
+    <div class="col-sm-6">
+        <a href="#" class="btn btn-primary col-sm-12">VALIDER LES QUANTITÉS</a>
+    </div>
+</div> 
+
+{% endblock %}
