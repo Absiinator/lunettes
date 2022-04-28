@@ -3,99 +3,82 @@
 {% block content %}
 
 <title>Créer un Nouveau Produit</title>
-<div class="row">
-    <div c></div>
-    <div class="card col-sm-12" style="height:5em">
-        <H2 class="card-header">
-            Modifier {{ product.name }}
-        </H2>
-    </div>
-</div>
-<form action="" method="POST"> {% csrf_token %}
+<form action="" method="POST" enctype="multipart/form-data" method="post">{% csrf_token %}
     <div class="row">
         <div class="card col-12">
-            <div class="card-header">
-                <h3 class="card-title">
-                    Infos
-                </h3>
+            <div class="row">
+                <H2 class="card-header col-12", style="margin-bottom: 1.5rem;">
+                    Ajouter un Nouveau Produit
+                </H2>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <label for="name">Nom du Produit*</label>
-                            {% for error in ProductForm.name.errors %}
-                                <p class="text-danger">{{ error }}</p>
-                            {% endfor %}
-                            {{ ProductForm.name }}
-                        </div>
-                    </div> 
-                    <div class="col col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <label for="name">Abréviation</label>
-                            {% for error in ProductForm.abreviation.errors %}
-                                <p class="text-danger">{{ error }}</p>
-                            {% endfor %}
-                            {{ ProductForm.abreviation }}
-                        </div>
-                    </div>
-                    <div class="col col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <label for="name">Fournisseur*</label>
-                            {% for error in ProductForm.supplier.errors %}
-                                <p class="text-danger">{{ error }}</p>
-                            {% endfor %}
-                            {{ ProductForm.supplier }}
-                        </div>
-                    </div> 
-                </div> 
-                <div class="row">
-                    <div class="col col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <label for="name">Quantité par lot</label>
-                            {% for error in ProductForm.quantity_by_lot.errors %}
-                                <p class="text-danger">{{ error }}</p>
-                            {% endfor %}
-                            {{ ProductForm.quantity_by_lot }}
-                        </div>
-                    </div>
-                    <div class="col col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <label for="name">Catégorie*</label>
-                            {% for error in ProductForm.category.errors %}
-                                <p class="text-danger">{{ error }}</p>
-                            {% endfor %}
-                            {{ ProductForm.category }}
-                        </div>
-                    </div>
-                    <div class="col col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <label for="name">Prix</label>
-                            {% for error in PriceForm.price.errors %}
-                                <p class="text-danger">{{ error }}</p>
-                            {% endfor %}
-                            {{ PriceForm.price }}
-                        </div>
+            <div class="row">
+                <div class="col col-md-4 col-sm-12">
+                    <div class="form-group">
+                        <label for="name">Nom du Produit*</label>
+                        {% for error in ProductForm.name.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                        {{ ProductForm.name }}
                     </div>
                 </div>
-            </div>    
+                <div class="col col-md-4 col-sm-12">
+                    <div class="form-group">
+                        <label for="name">Catégorie*</label>
+                        {% for error in ProductForm.category.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                        {{ ProductForm.category }}
+                    </div>
+                </div>
+                <div class="col col-md-4 col-sm-12">
+                    <div class="form-group">
+                        <label for="name">Genre*</label>
+                        {% for error in ProductForm.gender.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                        {{ ProductForm.gender }}
+                    </div>
+                </div>  
+            </div> 
+            <div class="row">
+                <div class="col col-md-4 col-sm-12">
+                    <div class="form-group">
+                        <label for="name">Prix</label>
+                        {% for error in ProductForm.price.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                        {{ ProductForm.price }}
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 1.5rem;">
+                <div class="col col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="name">Description</label>
+                        {% for error in ProductForm.description.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                        {{ ProductForm.description }}
+                    </div>
+                </div> 
+                <div class="col col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label>Image du Produit</label>
+                        <br>
+                        {% for error in ProductForm.image.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                        {% if product.image %}
+                            <img class='card-img' style="height:10em ; width:10em;" src="{{ product.image.url }}" alt="image loader placeholder" />
+                        {% else %}
+                            <img class='card-img' style="height:10em ; width:10em;" src="{% static 'img/image_uploader.png'%}" alt="image loader placeholder" />
+                        {% endif %}
+                        {{ProductForm.image}}    
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="card col-12" style="height:30em">
-            <div class="card-body">
-                <div class="row justify-content-center">
-                    <img class='card-img-top' style="height:300px ; width:300px ; margin-bottom: 3em;" src="{% static 'img/image_uploader.png' %}" alt="your image" />
-                    {% for error in ProductForm.image.errors %}
-                        <p class="text-danger">{{ error }}</p>
-                    {% endfor %}
-                    {{ProductForm.image}}
-                </div>
-            </div>
-        </div>    
-    </div>
-
     <div class="row">
         <div class="col">
             <div class="row">
@@ -106,7 +89,7 @@
             <div class="row justify-content-end">
                 <button type="submit" class="btn btn-primary col-sm-12">MODIFIER LE PRODUIT</button>
             </div>        
-        </div>
+        </div>   
     </div>    
 </form>
 

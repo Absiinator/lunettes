@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<title>Produits</title>
+<div class="row justify-content-center">
+    <div class="col-sm-12">
+        <div class="card text-left">
+            <h1 class="card-header">Clients</h1>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="text-primary">
+                          <tr>
+                            <th scope="col" class="text-left">Clients</th>
+                          </tr>
+                          <tbody>
+                              <!-- ici le contenu des tables-->
+                              {% for costumer in costumers %}
+                              <tr>
+                                  <td class="text-left">
+                                      <a href="{% url 'costumersDetails' costumer.id %}">{{costumer.username}}</a>
+                                  </td>
+                              </tr>
+                              {% endfor %}
+
+                          </tbody>
+                        </thead>
+                    </table>    
+                </div>    
+            </div>
+        <div class="row">
+            <div class="col">
+                <a href="{% url 'costumersCreate'%}" class="btn btn-secondary col-12">AJOUTER UN CLIENT</a>
+            </div>
+        </div>
+        </div>    
+    </div>
+</div>
+
+{% endblock %}

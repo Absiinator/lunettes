@@ -43,10 +43,24 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#">
+            <li class="nav-item {% if pageActive == 'Dashboard' %}active{%else%} {% endif %}">
+                <a class="nav-link" href="{% url 'dashboard' %}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
+            </li>
+
+            <!-- Nav Item - Products -->
+            <li class="nav-item {% if pageActive == 'Products' %}active{%else%} {% endif %}">
+                <a class="nav-link" href="{% url 'products' %}">
+                    <i class="fas fa-fw fa-glasses"></i>
+                    <span>Products</span></a>
+            </li>
+
+            <!-- Nav Item - Products -->
+            <li class="nav-item {% if pageActive == 'Costumers' %}active{%else%} {% endif %}">
+                <a class="nav-link" href="{% url 'costumers' %}">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Costumers</span></a>
             </li>
 
         </ul>
@@ -63,16 +77,6 @@
 
                     {% block content %}
                     {% endblock %}
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>&copy; Lepage Jeffrey 2022</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->

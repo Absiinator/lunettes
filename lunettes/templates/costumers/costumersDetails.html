@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<title>Page Produit</title>
+
+<!-- Values Cards -->
+<div class="row">
+    <div class="col-12">
+        <div class="card col-12">
+            <div class="row">
+                <H2 class="card-header col-12" style="position:relative">
+                    <a href="{% url 'costumers' %}" class="text-muted" style="position: relative; bottom: -4px" >
+                        <i class="fas fa-fw fa-chevron-left"></i>
+                    </a>
+                    {{costumer.username}}
+                </H2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col {% if costumer.image %} col-md-9 col-xs-12 {% else %} col-12 {% endif %}">
+                        <div class="row">
+                            <div class="col col-md-6 col-xs-12">  
+                                <label>Nom du produit</label>
+                                <p>{{ costumer.username }}</p>
+                            </div>
+                            <div class="col col-md-6 col-xs-12">
+                                <label>Catégorie</label>
+                                <p>
+                                    {{ costumer.gender }}
+                                </p>    
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% if costumer.image %}
+                    <div class="col col-md-3 col-xs-12">
+                        <div class="row">
+                            <label>Image du Produit</label>
+                            <br>
+                            <img class="card-img" src="{{ costumer.image.url }}">    
+                        </div>    
+                    </div>
+                    {% endif %}    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <button type="button" class="btn btn-danger col-sm-12" data-toggle="modal" data-target="#exampleModalCenter">
+                            SUPRPIMER
+                        </button>
+                            
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Supprimer {{ costumer.username }} ?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Voulez-vous vraiment supprimer ce client ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary col" data-dismiss="modal">Fermer</button>
+                                <a href="{% url 'costumersDelete' costumer.id %}" class="btn btn-danger col">SUPPRIMER</a>
+                            </div>
+                            </div>
+                        </div>
+                        </div>            
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row justify-content-end">
+                        <a href="{% url 'costumersModify' costumer.id %}" class="btn btn-secondary col-sm-12">MODIFIER</a>
+                    </div>        
+                </div>
+                <div class="col">
+                    <div class="row justify-content-end">
+                        <a href="{% url 'costumersCreate'%}" class="btn btn-primary col-sm-12">CRÉER UN CLIENT</a>
+                    </div>        
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+
+<!-- Boutons -->
+
+
+{% endblock %}

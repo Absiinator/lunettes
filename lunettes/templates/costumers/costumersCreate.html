@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<title>Créer un Nouveau Produit</title>
+<form action="" method="POST" enctype="multipart/form-data" method="post">{% csrf_token %}
+    <div class="row">
+        <div class="card col-12">
+            <div class="row">
+                <H2 class="card-header col-12", style="margin-bottom: 1.5rem;">
+                    Ajouter un Nouveau Client
+                </H2>
+            </div>
+            <div class="row">
+                <div class="col col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="name">Username du client*</label>
+                        {% for error in CostumerForm.name.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                        {{ CostumerForm.username }}
+                    </div>
+                </div>
+                <div class="col col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="name">Genre*</label>
+                        {% for error in CostumerForm.gender.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                        {{ CostumerForm.gender }}
+                    </div>
+                </div>  
+            </div> 
+            <div class="row" style="margin-bottom: 1.5rem;">
+                <div class="col col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label>Image du Client</label>
+                        <br>
+                        {% for error in CostumerForm.image.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                        <img class='card-img' style="height:10em ; width:10em;" src="{% static 'img/image_uploader.png' %}" alt="image loader placeholder" />
+                        {{CostumerForm.image}}    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row justify-content-left">
+                <a href="{% url 'costumers' %}" class="btn btn-danger col-sm-12">ANNULER</a>
+            </div>        
+        </div>
+        <div class="col">
+            <div class="row justify-content-end">
+                <button type="submit" class="btn btn-primary col-sm-12">CRÉER LE CLIENT</button>
+            </div>        
+        </div>
+    </div>    
+</form>
+
+{% endblock %}

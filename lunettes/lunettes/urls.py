@@ -20,12 +20,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('dashboard/', include('dashboard.urls')),
+    path('', include('dashboard.urls')),
     path('products/', include('products.urls')),
+    path('costumers/', include('costumer.urls')),
     
     path('login/', Authentification, name='authentification'),  
     path('logout/', LogoutUser, name='logout'),  
 
     path('admin/', admin.site.urls),
-] +  static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] +  static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

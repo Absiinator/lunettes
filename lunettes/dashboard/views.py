@@ -5,4 +5,5 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required(login_url='authentification')
 def dashboard(request):
-    return render(request, 'dashboard/dashboard.html')
+    context = {'pageActive': 'dashboard'}
+    return render(request, 'dashboard/dashboard.html', context)

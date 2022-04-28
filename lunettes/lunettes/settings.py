@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dashboard',
-    'products'
+    'products',
     'costumer'
 ]
 
@@ -131,6 +131,11 @@ STATIC_ROOT = 'static'
 STATICFILES_DIRS =  [
     os.path.join(BASE_DIR, 'lunettes/static')
 ]
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 
 CRISPY_TEMPLATE_PACK = 'boostrap4'
 

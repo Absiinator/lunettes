@@ -13,22 +13,24 @@
                           <tr>
                             <th scope="col" class="text-left">Produits</th>
                             <th scope="col" class="text-left">Catégorie</th>
-                            <th scope="col" class="text-left">Fournisseur</th>
+                            <th scope="col" class="text-left">Genre</th>
                             <!-- mettre sous condtion l'affichage de cette ligne -->
                             <th scope="col" class="text-right">Prix unitaire</th>
                           </tr>
                           <tbody>
                               <!-- ici le contenu des tables-->
-                              {% for index, product in products.iterrows %}
+                              {% for product in products %}
                               <tr>
                                   <td class="text-left">
                                       <a href="{% url 'productsDetails' product.id %}">{{product.name}}</a>
                                   </td>
                                   <td>
-                                      <a class="text-reset" href="{% url 'categoriesDetails' product.category_id %}">{{ product.category }}</a>
+                                      {{ product.category }}
                                   </td>
                                   <td>
-                                      <a class="text-reset" href="{% url 'suppliersDetails' product.supplier_id %}">{{ product.supplier }}</a>
+                                      {% for gender in product.gender.all %}
+                                      {{ gender }}
+                                      {% endfor %}
                                   </td>
                                   <td class="text-right">{{ product.price|floatformat:2 }} €</td>
                               </tr>
@@ -39,10 +41,13 @@
                     </table>    
                 </div>    
             </div>
+        <div class="row">
+            <div class="col">
+                <a href="{% url 'productsCreate'%}" class="btn btn-secondary col-12">AJOUTER UN PRODUIT</a>
+            </div>
+        </div>
         </div>    
     </div>
 </div>
-<div class="row justify-content-end">
-    <a href="{% url 'productsCreate'%}" class="btn btn-secondary">AJOUTER UN PRODUIT</a>
-</div>
+
 {% endblock %}
