@@ -68,25 +68,41 @@
                         {% for error in ProductForm.image.errors %}
                             <p class="text-danger">{{ error }}</p>
                         {% endfor %}
-                        <img class='card-img' style="height:10em ; width:10em;" src="{% static 'img/image_uploader.png' %}" alt="image loader placeholder" />
+                        <img id="photo" class='card-img' style="height:10em ; width:10em;" src="{% static 'img/image_uploader.png' %}" alt="image loader placeholder" />
                         {{ProductForm.image}}    
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="card-footer col-12">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                                <a href="{% url 'products' %}" class="btn btn-danger col-sm-12">ANNULER</a>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                                <button type="submit" class="btn btn-primary col-sm-12">CRÉER LE PRODUIT</button>
+                        </div>
+                    </div>            
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <div class="row justify-content-left">
-                <a href="{% url 'products' %}" class="btn btn-danger col-sm-12">ANNULER</a>
-            </div>        
-        </div>
-        <div class="col">
-            <div class="row justify-content-end">
-                <button type="submit" class="btn btn-primary col-sm-12">CRÉER LE PRODUIT</button>
-            </div>        
-        </div>
-    </div>    
 </form>
 
+<!-- Dynamic photo input -->
+<script>
+    const photoInput = document.getElementById('image-uplaod');
+    var uploaded_image = "";
+
+    // display uploaded image
+    photoInput.addEventListener('change', function(e) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('photo').src = e.target.result;
+            uploaded_image = e.target.result;
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    });
+
+</script>
 {% endblock %}

@@ -15,11 +15,10 @@ def get_prediction(image, model):
     filename = image.split('/')[-1]
     image = os.path.join(BASE_DIR, f'.{image}/')
     image = os.path.join(IMAGE_DIR, filename)    
-    print(image)
 
     classes = ['Male','Female']
 
-    frame =cv2.imread(image)
+    frame = cv2.imread(image)
     face, confidence = cv.detect_face(frame)
     for idx, f in enumerate(face):
         # get corner points of face rectangle        

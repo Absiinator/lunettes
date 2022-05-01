@@ -8,89 +8,108 @@
         <div class="card col-12 shadow">
             <div class="row">
                 <H2 class="card-header col-12", style="margin-bottom: 1.5rem;">
-                    Ajouter un Nouveau Produit
+                    Modifier un produit
                 </H2>
             </div>
-            <div class="row">
-                <div class="col col-md-4 col-sm-12">
-                    <div class="form-group">
-                        <label for="name">Nom du Produit*</label>
-                        {% for error in ProductForm.name.errors %}
-                            <p class="text-danger">{{ error }}</p>
-                        {% endfor %}
-                        {{ ProductForm.name }}
+            <div class="card-body">
+                <div class="row">
+                    <div class="col col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label for="name">Nom du Produit*</label>
+                            {% for error in ProductForm.name.errors %}
+                                <p class="text-danger">{{ error }}</p>
+                            {% endfor %}
+                            {{ ProductForm.name }}
+                        </div>
                     </div>
-                </div>
-                <div class="col col-md-4 col-sm-12">
-                    <div class="form-group">
-                        <label for="name">Catégorie*</label>
-                        {% for error in ProductForm.category.errors %}
-                            <p class="text-danger">{{ error }}</p>
-                        {% endfor %}
-                        {{ ProductForm.category }}
+                    <div class="col col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label for="name">Catégorie*</label>
+                            {% for error in ProductForm.category.errors %}
+                                <p class="text-danger">{{ error }}</p>
+                            {% endfor %}
+                            {{ ProductForm.category }}
+                        </div>
                     </div>
-                </div>
-                <div class="col col-md-4 col-sm-12">
-                    <div class="form-group">
-                        <label for="name">Genre*</label>
-                        {% for error in ProductForm.gender.errors %}
-                            <p class="text-danger">{{ error }}</p>
-                        {% endfor %}
-                        {{ ProductForm.gender }}
-                    </div>
-                </div>  
-            </div> 
-            <div class="row">
-                <div class="col col-md-4 col-sm-12">
-                    <div class="form-group">
-                        <label for="name">Prix</label>
-                        {% for error in ProductForm.price.errors %}
-                            <p class="text-danger">{{ error }}</p>
-                        {% endfor %}
-                        {{ ProductForm.price }}
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="margin-bottom: 1.5rem;">
-                <div class="col col-md-6 col-sm-12">
-                    <div class="form-group">
-                        <label for="name">Description</label>
-                        {% for error in ProductForm.description.errors %}
-                            <p class="text-danger">{{ error }}</p>
-                        {% endfor %}
-                        {{ ProductForm.description }}
-                    </div>
+                    <div class="col col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label for="name">Genre*</label>
+                            {% for error in ProductForm.gender.errors %}
+                                <p class="text-danger">{{ error }}</p>
+                            {% endfor %}
+                            {{ ProductForm.gender }}
+                        </div>
+                    </div>  
                 </div> 
-                <div class="col col-md-6 col-sm-12">
-                    <div class="form-group">
-                        <label>Image du Produit</label>
-                        <br>
-                        {% for error in ProductForm.image.errors %}
-                            <p class="text-danger">{{ error }}</p>
-                        {% endfor %}
-                        {% if product.image %}
-                            <img class='card-img' style="height:10em ; width:10em;" src="{{ product.image.url }}" alt="image loader placeholder" />
-                        {% else %}
-                            <img class='card-img' style="height:10em ; width:10em;" src="{% static 'img/image_uploader.png'%}" alt="image loader placeholder" />
-                        {% endif %}
-                        {{ProductForm.image}}    
+                <div class="row">
+                    <div class="col col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label for="name">Prix</label>
+                            {% for error in ProductForm.price.errors %}
+                                <p class="text-danger">{{ error }}</p>
+                            {% endfor %}
+                            {{ ProductForm.price }}
+                        </div>
                     </div>
                 </div>
+                <div class="row" style="margin-bottom: 1.5rem;">
+                    <div class="col col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="name">Description</label>
+                            {% for error in ProductForm.description.errors %}
+                                <p class="text-danger">{{ error }}</p>
+                            {% endfor %}
+                            {{ ProductForm.description }}
+                        </div>
+                    </div> 
+                    <div class="col col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label>Image du Produit</label>
+                            <br>
+                            {% for error in ProductForm.image.errors %}
+                                <p class="text-danger">{{ error }}</p>
+                            {% endfor %}
+                            {% if product.image %}
+                                <img id ='photo' class='card-img' style="height:10em ; width:10em;" src="{{ product.image.url }}" alt="image loader placeholder" />
+                            {% else %}
+                                <img id ='photo' class='card-img' style="height:10em ; width:10em;" src="{% static 'img/image_uploader.png'%}" alt="image loader placeholder" />
+                            {% endif %}
+                            {{ProductForm.image}}    
+                        </div>
+                    </div>
+                </div>    
             </div>
+            <div class="row">
+                <div class="card-footer col-12">
+                    <div class="row">
+                        <div class="col">
+                            <a href="{% url 'productsDetails' product.id %}" class="btn btn-danger col">ANNULER</a>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary col-sm-12">MODIFIER LE PRODUIT</button>
+                        </div>   
+                    </div>            
+                </div>
+            </div>        
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <div class="row">
-                <a href="{% url 'productsDetails' product.id %}" class="btn btn-danger col">ANNULER</a>
-            </div>
-        </div>
-        <div class="col">
-            <div class="row justify-content-end">
-                <button type="submit" class="btn btn-primary col-sm-12">MODIFIER LE PRODUIT</button>
-            </div>        
-        </div>   
-    </div>    
 </form>
+
+<!-- Dynamic photo input -->
+<script>
+    const photoInput = document.getElementById('image-uplaod');
+    var uploaded_image = "";
+
+    // display uploaded image
+    photoInput.addEventListener('change', function(e) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('photo').src = e.target.result;
+            uploaded_image = e.target.result;
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    });
+
+</script>
 
 {% endblock %}

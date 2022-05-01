@@ -8,7 +8,7 @@ class GenderForm(forms.ModelForm):
         fields = ('name',)
 
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nom de la catégorie'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nom du genre'}),
         }
 
 class CostumerForm(forms.ModelForm):
@@ -17,7 +17,7 @@ class CostumerForm(forms.ModelForm):
         fields = ('username', 'gender', 'image', 'prediction')
 
         widgets  = {
-            'username' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
+            'username' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Prénom du client'}),
             'gender' : forms.Select(attrs={'class': 'form-control'}),
             'image': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Image', 'id':'image-uplaod'}),
             'prediction': forms.TextInput(attrs={'class': 'form-control'}),

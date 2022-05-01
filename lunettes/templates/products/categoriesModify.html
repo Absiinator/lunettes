@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<title>Modifier une Catégorie</title>
+<form action="" method="POST" enctype="multipart/form-data" method="post">{% csrf_token %}
+    <div class="row">
+        <div class="card col-12 shadow">
+            <div class="row">
+                <div class="card-header col-12">
+                    <H3>Modifier {{ category.name }}</H3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="card-body">
+                    <div class="form-group col-12">
+                        <label for="name">Nom de la catégorie</label>
+                        {{ CategoryForm.name }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="card-footer col-12">
+                    <div class="row">
+                        <div class="col">
+                            <a href="{% url 'categoriesDetails' category.id %}" class="btn btn-danger col">ANNULER</a>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary col-sm-12">MODIFIER LA CATÉGORIE</button>
+                        </div>   
+                    </div>            
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

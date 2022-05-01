@@ -12,7 +12,7 @@ model = pickle.load(open(f'{BASE_DIR}/lunettes/static/AI/model.pkl', 'rb'))
 
 # Create your views here.
 def costumersList(request):
-    costumers = Costumer.objects.all()
+    costumers = Costumer.objects.all()[::-1]
     context = {
         'pageActive': 'Costumers',
         'costumers': costumers,
@@ -37,17 +37,18 @@ def costumersCreate(request):
             if request.FILES['image']:
                 form = CostumerForm(request.POST, request.FILES)
                 if form.is_valid():
-                    Instance = form.save(commit=False)
+                    Instance = form.save()
                     costumerImage = str(Instance.image.url)
                     predictions = get_prediction(image=costumerImage, model=model)[1]
                     Instance.prediction = predictions
                     Instance.save()
+                    return redirect(costumersDetails, Instance.id)
         else:
             form = CostumerForm(request.POST)
 
         if form.is_valid():
-            form.save()
-            return redirect(costumersList)
+            Instance = form.save()
+            return redirect(costumersDetails, Instance.id)
 
     context = {
         'pageActive': 'Costumers',
@@ -59,7 +60,19 @@ def costumersModify(request, id):
     costumer = Costumer.objects.get(id=id)
     form = CostumerForm(instance=costumer)
     if request.method == 'POST':
-        form = CostumerForm(request.POST, request.FILES, instance=costumer)
+        if request.FILES:
+            if request.FILES['image']:
+                form = CostumerForm(request.POST, request.FILES, instance=costumer)
+                if form.is_valid():
+                    Instance = form.save()
+                    costumerImage = str(Instance.image.url)
+                    predictions = get_prediction(image=costumerImage, model=model)[1]
+                    Instance.prediction = predictions
+                    Instance.save()
+                    return redirect(costumersDetails, id)
+        else:
+            form = CostumerForm(request.POST, instance=costumer)
+
         if form.is_valid():
             form.save()
             return redirect(costumersDetails, id)

@@ -57,42 +57,40 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col">
+                <div class="card-footer col-12">
                     <div class="row">
-                        <button type="button" class="btn btn-danger col-sm-12" data-toggle="modal" data-target="#exampleModalCenter">
-                            SUPRPIMER
-                        </button>
-                            
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Supprimer {{ product.name }} ?</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                        <div class="col">
+                                <button type="button" class="btn btn-danger col-sm-12" data-toggle="modal" data-target="#exampleModalCenter">
+                                    SUPRPIMER
                                 </button>
-                            </div>
-                            <div class="modal-body">
-                                Voulez-vous vraiment supprimer ce produit ?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary col" data-dismiss="modal">Fermer</button>
-                                <a href="{% url 'productsDelete' product.id %}" class="btn btn-danger col">SUPPRIMER</a>
-                            </div>
-                            </div>
+                                    
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Supprimer {{ product.name }} ?</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Voulez-vous vraiment supprimer ce produit ?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary col" data-dismiss="modal">Fermer</button>
+                                                <a href="{% url 'productsDelete' product.id %}" class="btn btn-danger col">SUPPRIMER</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>            
                         </div>
-                        </div>            
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="row justify-content-end">
-                        <a href="{% url 'productsModify' product.id %}" class="btn btn-secondary col-sm-12">MODIFIER</a>
-                    </div>        
-                </div>
-                <div class="col">
-                    <div class="row justify-content-end">
-                        <a href="{% url 'productsCreate'%}" class="btn btn-primary col-sm-12">CRÉER UN PRODUIT</a>
+                        <div class="col">
+                            <a href="{% url 'productsModify' product.id %}" class="btn btn-secondary col-sm-12">MODIFIER</a>
+                        </div>
+                        <div class="col">
+                            <a href="{% url 'productsCreate'%}" class="btn btn-primary col-sm-12">CRÉER UN PRODUIT</a>
+                        </div>
                     </div>        
                 </div>
             </div>
