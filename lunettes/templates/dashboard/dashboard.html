@@ -2,5 +2,135 @@
 {% load static %}
 {% block content %}
 
-<h1> good job </h1>
+<div class="row">
+    <div class="card col-12 shadow border-danger" style="margin-bottom: 1rem ;">
+        <div class="card-header bg-transparent border-danger" style="position: relative;">
+            <H1 class="card-title text-danger">Informations</H1>
+        </div>
+        <div class="card-body text-center">
+            <div class="card-text">
+                <p>Ce logiciel est un projet de fin d'études pour l'obtention du diplôme de Développeur en Intelligence Artificielle.</p>
+                <p>Pour plus d'informations, merci de vous référer au README présent sur le github du projet.</p>
+            </div>
+        </div>
+        <div class="card-footer bg-transparent border-danger text-center">
+            <a href="https://github.com/Absiinator/lunettes">https://github.com/Absiinator/lunettes</a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="card-group col-12 shadow" style="padding-top:1rem ; padding-bottom: 1rem; border-radius: 2px;">
+        <div class="card">
+            <H2 class="card-header text-primary" style="position:relative">Distribution des genres des clients</H2>
+            <div class="card-body text-center">
+                <div class='chart' style="position: relative ;">
+                    <canvas id="Distribution Chart"></canvas>
+                </div>
+            </div>    
+        </div>    
+        <div class="card">
+            <H2 class="card-header text-primary" style="position:relative">Liste des Porduits</H2>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="text-primary">
+                            <tr>
+                            <th scope="col" class="text-left">Produits</th>
+                            <th scope="col" class="text-left">Catégorie</th>
+                            <th scope="col" class="text-left">Genre</th>
+                            <!-- mettre sous condtion l'affichage de cette ligne -->
+                            <th scope="col" class="text-right">Prix unitaire</th>
+                            </tr>
+                            <tbody>
+                                <!-- ici le contenu des tables-->
+                                {% for product in products %}
+                                <tr>
+                                    <td class="text-left">
+                                        <a href="{% url 'productsDetails' product.id %}">{{product.name}}</a>
+                                    </td>
+                                    <td>
+                                        {{ product.category }}
+                                    </td>
+                                    <td>
+                                        {% for gender in product.gender.all %}
+                                        {{ gender }}
+                                        {% endfor %}
+                                    </td>
+                                    <td class="text-right">{{ product.price|floatformat:2 }} €</td>
+                                </tr>
+                                {% endfor %}
+    
+                            </tbody>
+                        </thead>
+                    </table>    
+                </div> 
+            </div>
+            <div class="card-footer bg-transparent">
+                <a href="{% url 'products'%}" class="btn btn-secondary col-12">Liste des produits complète</a>
+            </div>    
+        </div>           
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const labels = ['Hommes', 'Femmes'];
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Gender Distribution',
+            data: [{% for index, row in distribution.iterrows %}
+                    {{ row.Male }},
+                    {{ row.Female }}
+                    {% endfor %}
+                ],
+            backgroundColor: [
+                'rgba(52,111, 213)',
+                'rgba(52,111, 213)',
+                ],
+            borderColor: [
+                'rgba(52,111, 213)',
+                'rgba(52,111, 213)',
+                ],
+            borderWidth: 1
+            }]
+        };
+</script>
+<script>
+    const config = {
+        type: 'bar',
+        data: data,
+        maintainAspectRatio: false,
+        options: {
+            title: {
+                display: false,
+            },
+            legend: {
+                display: false,
+            },
+            responsive:true,
+            scales: {
+            y:  {
+                beginAtZero: true,
+                ticks: {
+                    min: 0,
+                    stepSize: 1
+                    }
+                }
+            },
+            x: {
+                grid: {
+                    display: false
+                }
+            }
+        },
+    };
+</script>
+<script>
+    var myChart = new Chart(
+      document.getElementById('Distribution Chart'),
+      config
+    );
+</script>
+
 {% endblock %}

@@ -5,7 +5,7 @@
 <title>Modifier {{ costumer.username }}</title>
 <form action="" method="POST" enctype="multipart/form-data" method="post">{% csrf_token %}
     <div class="row">
-        <div class="card col-12">
+        <div class="card col-12 shadow">
             <div class="row">
                 <H2 class="card-header col-12", style="margin-bottom: 1.5rem;">
                     Ajouter un Nouveau Client
@@ -40,9 +40,9 @@
                             <p class="text-danger">{{ error }}</p>
                         {% endfor %}
                         {% if costumer.image %}
-                            <img class='card-img' style="height:10em ; width:10em;" src="{{ costumer.image.url }}" alt="image loader placeholder" />
+                            <img id = "photo" class='card-img' style="height:10em ; width:10em;" src="{{ costumer.image.url }}" alt="image loader placeholder" />
                         {% else %}
-                            <img class='card-img' style="height:10em ; width:10em;" src="{% static 'img/image_uploader.png' %}" alt="image loader placeholder" />
+                            <img id = "photo"  class='card-img' style="height:10em ; width:10em;" src="{% static 'img/image_uploader.png' %}" alt="image loader placeholder" />
                         {% endif %}
                         {{CostumerForm.image}}    
                     </div>
@@ -63,5 +63,22 @@
         </div>   
     </div>    
 </form>
+
+<!-- Dynamic photo input -->
+<script>
+    const photoInput = document.getElementById('image-uplaod');
+    var uploaded_image = "";
+
+    // display uploaded image
+    photoInput.addEventListener('change', function(e) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('photo').src = e.target.result;
+            uploaded_image = e.target.result;
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    });
+
+</script>
 
 {% endblock %}

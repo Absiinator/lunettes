@@ -4,8 +4,21 @@
 <title>Produits</title>
 <div class="row justify-content-center">
     <div class="col-sm-12">
-        <div class="card text-left">
-            <h1 class="card-header">Produits</h1>
+        <div class="card text-left shadow">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-11">
+                        <h3 class="card-title text-primary">Produits</h3>
+                    </div>
+                    <div class="col-1 justify-content-end">
+                        <h3>
+                            <a href="{% url 'productsCreate' %}" class="text-muted" >
+                                <i class="fas fa-fw fa-plus"></i>
+                            </a>     
+                        </h3>
+                    </div>    
+                </div>
+            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
@@ -41,12 +54,10 @@
                     </table>    
                 </div>    
             </div>
-        <div class="row">
-            <div class="col">
+            <div class="card-footer">
                 <a href="{% url 'productsCreate'%}" class="btn btn-secondary col-12">AJOUTER UN PRODUIT</a>
-            </div>
-        </div>
-        </div>    
+            </div> 
+        </div>   
     </div>
 </div>
 

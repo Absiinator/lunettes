@@ -14,10 +14,11 @@ class GenderForm(forms.ModelForm):
 class CostumerForm(forms.ModelForm):
     class Meta:
         model = Costumer
-        fields = ('username', 'gender', 'image')
+        fields = ('username', 'gender', 'image', 'prediction')
 
         widgets  = {
             'username' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
             'gender' : forms.Select(attrs={'class': 'form-control'}),
-            'image': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Image'}),
+            'image': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Image', 'id':'image-uplaod'}),
+            'prediction': forms.TextInput(attrs={'class': 'form-control'}),
         }

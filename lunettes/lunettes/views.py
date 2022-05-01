@@ -20,7 +20,7 @@ def Authentification(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('Home')
+            return redirect('dashboard')
         else:
             messages.info(request, "Nom d'Utilisateur ou Mot De Passe incorrect")
 

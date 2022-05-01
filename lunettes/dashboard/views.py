@@ -11,7 +11,7 @@ from products.models import *
 # Create your views here.
 @login_required(login_url='authentification')
 def dashboard(request):
-    products = Product.objects.all()
+    products = Product.objects.all()[:10]
     costumers = Costumer.objects.all()
 
     # create a dataframe of gender distribution
