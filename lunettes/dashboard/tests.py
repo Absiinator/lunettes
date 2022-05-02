@@ -60,3 +60,8 @@ class DashboardTestCase(TestCase):
             costumer.save()
         
         Dummy_database.objects.create(loaded=True)
+        costumer = Costumer.objects.get(id=12)
+
+        self.assertEqual(str(costumer), 'Beatrice')
+
+    
