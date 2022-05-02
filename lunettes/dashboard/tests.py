@@ -52,7 +52,7 @@ class DashboardTestCase(TestCase):
             )
             
             costumer = Costumer.objects.get(id=costumer.id)
-            costumer.image.save(dummy_file_name, ImageFile(lf)) # this syntax is required
+            #costumer.image.save(dummy_file_name, ImageFile(lf)) # this syntax is required.     # tagged on tests due to unnecessary flood in folder costumer due to the method used
 
             image = get_file_path(costumer_image=costumer.image.url)
             predictions = get_prediction(image, model=model)[1]
