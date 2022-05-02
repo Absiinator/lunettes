@@ -41,7 +41,11 @@
                                 {% for gender in product.gender.all %}
                                 <p>{{ gender }}</p>
                                 {% endfor %}
-                            </div> 
+                            </div>
+                            <div class="col col-md-4 col-xs-12">
+                                <label> Description</label>
+                                <p>{{ product.description }}</p>
+                            </div>
                         </div>   
                     </div>
                     

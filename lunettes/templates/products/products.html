@@ -87,6 +87,7 @@
                                     <a href="{% url 'productsDetails' product.id %}">{{product.name}}</a>
                                 </td>
                                 <td>
+                                    <a href="{% url 'categoriesDetails' product.category.id %}"></a>
                                     {{ product.category }}
                                 </td>
                                 <td>

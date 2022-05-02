@@ -39,6 +39,7 @@ def costumersCreate(request):
                 if form.is_valid():
                     Instance = form.save()
                     costumerImage = str(Instance.image.url)
+                    costumerImage = get_file_path(costumerImage)
                     predictions = get_prediction(image=costumerImage, model=model)[1]
                     Instance.prediction = predictions
                     Instance.save()
@@ -66,6 +67,7 @@ def costumersModify(request, id):
                 if form.is_valid():
                     Instance = form.save()
                     costumerImage = str(Instance.image.url)
+                    costumerImage = get_file_path(costumerImage)
                     predictions = get_prediction(image=costumerImage, model=model)[1]
                     Instance.prediction = predictions
                     Instance.save()

@@ -3,23 +3,43 @@
 {% block content %}
 
 <div class="row">
-    <div class="card col-12 shadow border-danger" style="margin-bottom: 1rem ;">
-        <div class="card-header bg-transparent border-danger" style="position: relative;">
-            <H1 class="card-title text-danger">Informations</H1>
-        </div>
-        <div class="card-body text-center">
-            <div class="card-text">
-                <p>Ce logiciel est un projet de fin d'études pour l'obtention du diplôme de Développeur en Intelligence Artificielle.</p>
-                <p>Pour plus d'informations, merci de vous référer au README présent sur le github du projet.</p>
+    <div class="card-group col-12">
+        <div class="card col-md-6 col-xs-12 border-danger" style="margin-bottom: 1rem ;">
+            <div class="card-header bg-transparent border-danger" style="position: relative;">
+                <H1 class="card-title text-danger">Informations</H1>
+            </div>
+            <div class="card-body text-center">
+                <div class="card-text">
+                    <p>Ce logiciel est un projet de fin d'études pour l'obtention du diplôme de Développeur en Intelligence Artificielle.</p>
+                    <p>Pour plus d'informations, merci de vous référer au README présent sur le github du projet.</p>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-danger text-center">
+                <a href="https://github.com/Absiinator/lunettes">https://github.com/Absiinator/lunettes</a>
             </div>
         </div>
-        <div class="card-footer bg-transparent border-danger text-center">
-            <a href="https://github.com/Absiinator/lunettes">https://github.com/Absiinator/lunettes</a>
+        <div class="card col-md-6 col-xs-12 border-info" style="margin-bottom: 1rem ;">
+            <div class="card-header bg-transparent border-info" style="position: relative;">
+                <H1 class="card-title text-info">Importer des Données factices</H1>
+            </div>
+            <div class="card-body text-center">
+                <div class="card-text">
+                    <p>Vous pouvez alimenter une fois le logiciel d'une base de données client fictive à des fins de test</p>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-info text-center">
+                {% if dataloaded == 0 %}
+                <a href="{% url 'import_database' %}" class="btn btn-secondary col-12">IMPORTER LES DONNÉES</a>
+                {% else %}
+                <button class="btn btn-outline-dark col-12" disabled>DONNÉES DÉJÀ IMPORTÉES</button>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
+
 <div class="row">
-    <div class="card-group col-12 shadow" style="padding-top:1rem ; padding-bottom: 1rem; border-radius: 2px;">
+    <div class="card-group col-12" style="padding-top:1rem ; padding-bottom: 1rem; border-radius: 2px;">
         <div class="card">
             <H2 class="card-header text-primary" style="position:relative">Distribution des genres des clients</H2>
             <div class="card-body text-center">

@@ -7,15 +7,18 @@ import cvlib as cv
 import pickle
 from pathlib import Path
 
+def get_file_path(costumer_image):
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    IMAGE_DIR = os.path.join(BASE_DIR, 'media/costumers/images')
+    filename = costumer_image.split('/')[-1]
+    image = os.path.join(BASE_DIR, f'.{costumer_image}/')
+    image = os.path.join(IMAGE_DIR, filename)  
+
+    return image
 
 
 def get_prediction(image, model):
-    BASE_DIR = Path(__file__).resolve().parent.parent
-    IMAGE_DIR = os.path.join(BASE_DIR, 'media/costumers/images')
-    filename = image.split('/')[-1]
-    image = os.path.join(BASE_DIR, f'.{image}/')
-    image = os.path.join(IMAGE_DIR, filename)    
-
+    
     classes = ['Male','Female']
 
     frame = cv2.imread(image)
