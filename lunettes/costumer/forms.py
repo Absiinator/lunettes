@@ -19,6 +19,6 @@ class CostumerForm(forms.ModelForm):
         widgets  = {
             'username' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Prénom du client'}),
             'gender' : forms.Select(attrs={'class': 'form-control'}),
-            'image': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Image', 'id':'image-uplaod'}),
+            'image': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Image', 'id':'image-uplaod', 'accept':'image/*'}),
             'prediction': forms.TextInput(attrs={'class': 'form-control'}),
         }

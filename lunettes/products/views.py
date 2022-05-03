@@ -60,14 +60,14 @@ def categoriesCreate(request):
             form.save()
             return redirect(productList)
 
-    context = {'pageActive': 'Categories',
+    context = {'pageActive': 'Products',
                'CategoryForm': form}
     return render(request, './products/categoriesCreate.html', context)
 
 def categoriesDetails(request, id):
     category = Category.objects.get(id=id)
     products = Product.objects.filter(category=category)
-    context = {'pageActive': 'Categories',
+    context = {'pageActive': 'Products',
                 'products': products,
                 'category': category}
     return render(request, './products/categoriesDetails.html', context)
@@ -81,7 +81,7 @@ def categoriesModify(request, id):
             form.save()
             return redirect(categoriesDetails, id)
 
-    context = {'pageActive': 'Categories',
+    context = {'pageActive': 'Products',
                'category': category,
                'CategoryForm': form}
     return render(request, './products/categoriesModify.html', context)

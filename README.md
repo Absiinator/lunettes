@@ -10,6 +10,8 @@ Model was trained and project was run on M1 equiped Macbook Pro. Please check yo
 ## Before running the server
 You can execute the tests to see if everything will work fine in the backend.  
 > cd lunettes
+> python3 manage.py makemigrations
+> python3 manage.py migrate
 > python3 manage.py test
 
 If no error is detected, you can procede.
