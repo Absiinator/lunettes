@@ -21,7 +21,7 @@ authentification can be achieved by creating a superuser
 > cd lunettes  
 > python3 manage.py createsuperuser
 
-By default I recommand creating a simlpe admin/admin  
+By default I recommand creating a simple admin/admin  
 Django will automatically create genders when logging into the dashboard. This happens if the number of genre is not 2 !   
 You cannot make more than 2 genders !  
 This model is not capable of scalling.  
