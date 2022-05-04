@@ -10,23 +10,24 @@ Model was trained and project was run on M1 equiped Macbook Pro. Please check yo
 ## Before running the server
 You can execute the tests to see if everything will work fine in the backend.  
 > cd lunettes
-> python3 manage.py makemigrations
-> python3 manage.py migrate
-> python3 manage.py test
+> python3 manage.py makemigrations  
+> python3 manage.py migrate  
+> python3 manage.py test  
 
 If no error is detected, you can procede.
 ## When running the server for the first time
 
 authentification can be achieved by creating a superuser
-> cd lunettes
+> cd lunettes  
 > python3 manage.py createsuperuser
 
 By default I recommand creating a simlpe admin/admin  
-Django will automatically create genders when logging into the dashboard. This happens if the number of genre is not 2 !  
-You cannot make more than 2 genders ! model is not capable of scalling.  
+Django will automatically create genders when logging into the dashboard. This happens if the number of genre is not 2 !   
+You cannot make more than 2 genders !  
+This model is not capable of scalling.  
 
 ### Init with dummy database
 You can then import the dummy database by pressing the button on the dashboard.  
 This can only happen ONCE, due to the risk of flooding the database with copies.  
 The dummy dataset is then fully processed by the prediction.  
-You only ahve to create a product category and create products of your liking. 
+You only have to create a product category and create products of your liking. 
