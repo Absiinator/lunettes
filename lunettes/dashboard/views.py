@@ -44,6 +44,7 @@ def dashboard(request):
     return render(request, 'dashboard/dashboard.html', context)
 
 # import dummies from csv
+@login_required(login_url='authentification')
 def Import_database(request):
     if Dummy_database.objects.all().count() == 0: # if database is not loaded
         # import and read cv

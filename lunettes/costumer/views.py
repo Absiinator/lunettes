@@ -2,6 +2,10 @@ from django.shortcuts import redirect, render
 from .models import *
 from .forms import *
 from .getPredictions import *
+from .decorators import *
+from django.contrib.auth.decorators import login_required
+
+
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 import pickle
@@ -11,6 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 model = pickle.load(open(f'{BASE_DIR}/lunettes/static/AI/model.pkl', 'rb'))
 
 # Create your views here.
+@login_required(login_url='authentification')
 def costumersList(request):
     costumers = Costumer.objects.all()[::-1]
     context = {
@@ -19,6 +24,7 @@ def costumersList(request):
     }
     return render(request, 'costumers/costumers.html', context)
 
+@login_required(login_url='authentification')
 def costumersDetails(request, id):
     costumer = Costumer.objects.get(id=id)
     declared_gender = str(costumer.gender)
@@ -30,6 +36,7 @@ def costumersDetails(request, id):
     }
     return render(request, 'costumers/costumersDetails.html', context)
 
+@login_required(login_url='authentification')
 def costumersCreate(request):
     form = CostumerForm()
     if request.method == 'POST':
@@ -57,6 +64,7 @@ def costumersCreate(request):
     }
     return render(request, 'costumers/costumersCreate.html', context)
 
+@login_required(login_url='authentification')
 def costumersModify(request, id):
     costumer = Costumer.objects.get(id=id)
     form = CostumerForm(instance=costumer)
@@ -86,6 +94,7 @@ def costumersModify(request, id):
     }
     return render(request, 'costumers/costumersModify.html', context)
 
+@login_required(login_url='authentification')
 def costumersDelete(request, id):
     costumer = Costumer.objects.get(id=id)
     costumer.delete()

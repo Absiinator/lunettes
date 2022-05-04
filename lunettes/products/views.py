@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
+from django.contrib.auth.decorators import login_required
 
 # Products views
+@login_required(login_url='authentification')
 def productList(request):
     products = Product.objects.all()
     categories = Category.objects.all()
@@ -13,6 +15,7 @@ def productList(request):
         }
     return render(request, 'products/products.html', context)
 
+@login_required(login_url='authentification')
 def productsCreate(request):
     form = ProductForm()
     if request.method == 'POST':
@@ -25,6 +28,7 @@ def productsCreate(request):
                'ProductForm': form}
     return render(request, './products/productsCreate.html', context)
 
+@login_required(login_url='authentification')
 def productsModify(request, id):
     product = Product.objects.get(id=id)
     form = ProductForm(instance=product)
@@ -39,12 +43,14 @@ def productsModify(request, id):
                'ProductForm': form}
     return render(request, './products/productsModify.html', context)
 
+@login_required(login_url='authentification')
 def productsDetails(request, id):
     product = Product.objects.get(id=id)
     context = {'pageActive': 'Products',
                'product': product}
     return render(request, './products/productsDetails.html', context)
 
+@login_required(login_url='authentification')
 def productsDelete(request, id):
     product = Product.objects.get(id=id)
     product.delete()
@@ -52,6 +58,7 @@ def productsDelete(request, id):
 
 
 # Categories views
+@login_required(login_url='authentification')
 def categoriesCreate(request):
     form = CategoryForm()
     if request.method == 'POST':
@@ -64,6 +71,7 @@ def categoriesCreate(request):
                'CategoryForm': form}
     return render(request, './products/categoriesCreate.html', context)
 
+@login_required(login_url='authentification')
 def categoriesDetails(request, id):
     category = Category.objects.get(id=id)
     products = Product.objects.filter(category=category)
@@ -72,6 +80,7 @@ def categoriesDetails(request, id):
                 'category': category}
     return render(request, './products/categoriesDetails.html', context)
 
+@login_required(login_url='authentification')
 def categoriesModify(request, id):
     category = Category.objects.get(id=id)
     form = CategoryForm(instance=category)
@@ -86,6 +95,7 @@ def categoriesModify(request, id):
                'CategoryForm': form}
     return render(request, './products/categoriesModify.html', context)
 
+@login_required(login_url='authentification')    
 def categoriesDelete(request, id):
     category = Category.objects.get(id=id)
     category.delete()
