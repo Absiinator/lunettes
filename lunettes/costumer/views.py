@@ -5,6 +5,8 @@ from .getPredictions import *
 from .decorators import *
 from django.contrib.auth.decorators import login_required
 
+from products.models import *
+
 
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
@@ -27,12 +29,15 @@ def costumersList(request):
 @login_required(login_url='authentification')
 def costumersDetails(request, id):
     costumer = Costumer.objects.get(id=id)
-    declared_gender = str(costumer.gender)
+    declared_gender = str(costumer.gender) # this is needed in order to compare string to string values in template
+
+    products_to_display = Product.objects.filter(gender=costumer.gender)
 
     context = {
         'pageActive': 'Costumers',
         'costumer': costumer,
-        'declared_genre': declared_gender # this is needed in order to compare string to string values in template
+        'declared_genre': declared_gender,
+        'products':products_to_display 
     }
     return render(request, 'costumers/costumersDetails.html', context)
 

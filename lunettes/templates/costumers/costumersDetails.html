@@ -5,7 +5,7 @@
 <title>Page Produit</title>
 
 <!-- Values Cards -->
-<div class="row">
+<div class="row" style="padding-bottom: 1rem;">
     <div class="col-12">
         <div class="card col-12 shadow">
             <div class="row">
@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
                             <button type="button" class="btn btn-danger col-12" data-toggle="modal" data-target="#exampleModalCenter">
-                                SUPRPIMER
+                                SUPPRIMER
                             </button>
                                 
                             <!-- Modal -->
@@ -96,5 +96,39 @@
         </div>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card col-12 shadow">
+            <div class="row">
+                <H2 class="card-header col-12" style="position:relative">
+                    Liste des produits liés au genre du client
+                </H2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nom des produits</th>
+                                    <th scope="col">Categorie</th>
+                                    <th class="text-right" scope="col">Prix</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in products %}
+                                <tr>
+                                    <td><a href="{% url 'productsDetails' product.id%}">{{ product.name }}</a></td>
+                                    <td><a href="{% url 'categoriesDetails' product.category.id %}">{{ product.category }}</a></td>
+                                    <td class="text-right">{{ product.price|floatformat:2 }} €</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
