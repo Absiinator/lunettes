@@ -7,9 +7,6 @@ class Gender(models.Model):
     def __str__(self):
         return self.name
 
-
-
-
 class Costumer(models.Model):
 
     username = models.CharField(max_length=255)
