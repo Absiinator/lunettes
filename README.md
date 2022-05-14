@@ -5,7 +5,14 @@ Please install requirements.txt with following commands :
 > pip install -r requirements.txt
 
 Make sure you created an virtual environnement before installing dependencies.  
-Model was trained and project was run on M1 equiped Macbook Pro. Please check your tensorflow installation.  
+Model was trained and project was run on M1 equiped Macbook Pro.  
+Please check your tensorflow installation.  
+[Install TensorFlow for your device](https://www.tensorflow.org)   
+
+
+If you're runing Tensor FLow on M1 Macs [**follow this guide**](https://developer.apple.com/metal/tensorflow-plugin/) and install M1macs requirements.
+
+> pip install -r requirementsM1macs.txt
 
 ## Before running the server
 You can execute the tests to see if everything will work fine in the backend.  

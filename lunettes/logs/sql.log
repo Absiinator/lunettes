@@ -1,0 +1,133 @@
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+(0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'admin' LIMIT 21; args=('admin',); alias=default
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+(0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'jeffreylepage' LIMIT 21; args=('jeffreylepage',); alias=default
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'admin' LIMIT 21; args=('admin',); alias=default
+(0.002) INSERT INTO "auth_user" ("password", "last_login", "is_superuser", "username", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined") SELECT 'pbkdf2_sha256$320000$EiVmQpH7k9bHUeI5bvqYNQ$jzLlgWqwOdtHCeFmYwF+Cxf00smIzoew/VwZdZ++HxQ=', NULL, 1, 'admin', '', '', '', 1, 1, '2022-05-13 22:33:38.527229' RETURNING "auth_user"."id"; args=('pbkdf2_sha256$320000$EiVmQpH7k9bHUeI5bvqYNQ$jzLlgWqwOdtHCeFmYwF+Cxf00smIzoew/VwZdZ++HxQ=', None, True, 'admin', '', '', '', True, True, '2022-05-13 22:33:38.527229'); alias=default
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+(0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'admin' LIMIT 21; args=('admin',); alias=default
+(0.000) SELECT (1) AS "a" FROM "django_session" WHERE "django_session"."session_key" = 'cc4pbislin0g9th0v9psld97s4pvdceh' LIMIT 1; args=('cc4pbislin0g9th0v9psld97s4pvdceh',); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) INSERT INTO "django_session" ("session_key", "session_data", "expire_date") SELECT 'cc4pbislin0g9th0v9psld97s4pvdceh', 'e30:1npdrA:Fl0aEKlmuMI55PkfzUTKlp_f6ekkfWxVLhaddNWLYJ8', '2022-05-27 22:33:56.598006'; args=('cc4pbislin0g9th0v9psld97s4pvdceh', 'e30:1npdrA:Fl0aEKlmuMI55PkfzUTKlp_f6ekkfWxVLhaddNWLYJ8', '2022-05-27 22:33:56.598006'); alias=default
+(0.000) UPDATE "auth_user" SET "last_login" = '2022-05-13 22:33:56.600614' WHERE "auth_user"."id" = 1; args=('2022-05-13 22:33:56.600614', 1); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) UPDATE "django_session" SET "session_data" = '.eJxVjDsOwjAQRO_iGlnxJ_5Q0ucM1q53gwPIkeKkQtydREoB1Ujz3sxbJNjWkrbGS5pIXIUSl98OIT-5HoAeUO-zzHNdlwnlociTNjnMxK_b6f4dFGhlXzv2FIkdsaVg9rTIXpvQaeoght4G1GMAZ3xEr4zSLoO3LmPEPo9Ki88X75835g:1npdrA:Ja58dNl0OFDqwau_ejL3vZA8IfYuWwFula2IYSmuh_M', "expire_date" = '2022-05-27 22:33:56.603765' WHERE "django_session"."session_key" = 'cc4pbislin0g9th0v9psld97s4pvdceh'; args=('.eJxVjDsOwjAQRO_iGlnxJ_5Q0ucM1q53gwPIkeKkQtydREoB1Ujz3sxbJNjWkrbGS5pIXIUSl98OIT-5HoAeUO-zzHNdlwnlociTNjnMxK_b6f4dFGhlXzv2FIkdsaVg9rTIXpvQaeoght4G1GMAZ3xEr4zSLoO3LmPEPo9Ki88X75835g:1npdrA:Ja58dNl0OFDqwau_ejL3vZA8IfYuWwFula2IYSmuh_M', '2022-05-27 22:33:56.603765', 'cc4pbislin0g9th0v9psld97s4pvdceh'); alias=default
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2022-05-13 22:33:56.613660' AND "django_session"."session_key" = 'cc4pbislin0g9th0v9psld97s4pvdceh') LIMIT 21; args=('2022-05-13 22:33:56.613660', 'cc4pbislin0g9th0v9psld97s4pvdceh'); alias=default
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,); alias=default
+(0.000) SELECT "costumer_gender"."id", "costumer_gender"."name" FROM "costumer_gender"; args=(); alias=default
+(0.000) SELECT "costumer_gender"."id", "costumer_gender"."name" FROM "costumer_gender"; args=(); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) INSERT INTO "costumer_gender" ("name") SELECT 'Male' RETURNING "costumer_gender"."id"; args=('Male',); alias=default
+(0.000) INSERT INTO "costumer_gender" ("name") SELECT 'Female' RETURNING "costumer_gender"."id"; args=('Female',); alias=default
+(0.000) SELECT COUNT(*) AS "__count" FROM "dashboard_dummy_database"; args=(); alias=default
+(0.000) SELECT COUNT(*) AS "__count" FROM "costumer_costumer" INNER JOIN "costumer_gender" ON ("costumer_costumer"."gender_id" = "costumer_gender"."id") WHERE "costumer_gender"."name" = 'Male'; args=('Male',); alias=default
+(0.000) SELECT COUNT(*) AS "__count" FROM "costumer_costumer" INNER JOIN "costumer_gender" ON ("costumer_costumer"."gender_id" = "costumer_gender"."id") WHERE "costumer_gender"."name" = 'Female'; args=('Female',); alias=default
+(0.000) SELECT "products_product"."id", "products_product"."name", "products_product"."description", "products_product"."price", "products_product"."image", "products_product"."category_id" FROM "products_product" LIMIT 10; args=(); alias=default
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+(0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+(0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+(0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) DELETE FROM "auth_user_groups";; args=None; alias=default
+(0.001) DELETE FROM "auth_permission";; args=None; alias=default
+(0.000) DELETE FROM "django_session";; args=None; alias=default
+(0.000) DELETE FROM "costumer_costumer";; args=None; alias=default
+(0.000) DELETE FROM "dashboard_dummy_database";; args=None; alias=default
+(0.000) DELETE FROM "auth_user_user_permissions";; args=None; alias=default
+(0.000) DELETE FROM "auth_user";; args=None; alias=default
+(0.000) DELETE FROM "django_content_type";; args=None; alias=default
+(0.000) DELETE FROM "costumer_gender";; args=None; alias=default
+(0.000) DELETE FROM "auth_group";; args=None; alias=default
+(0.000) DELETE FROM "auth_group_permissions";; args=None; alias=default
+(0.000) DELETE FROM "products_category";; args=None; alias=default
+(0.000) DELETE FROM "products_product";; args=None; alias=default
+(0.000) DELETE FROM "django_admin_log";; args=None; alias=default
+(0.000) DELETE FROM "products_product_gender";; args=None; alias=default
+(0.000) UPDATE "sqlite_sequence" SET "seq" = 0 WHERE "name" IN ('auth_user_groups', 'auth_permission', 'django_session', 'costumer_costumer', 'dashboard_dummy_database', 'auth_user_user_permissions', 'auth_user', 'django_content_type', 'costumer_gender', 'auth_group', 'auth_group_permissions', 'products_category', 'products_product', 'django_admin_log', 'products_product_gender');; args=None; alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'admin'; args=('admin',); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.001) INSERT INTO "django_content_type" ("app_label", "model") SELECT 'admin', 'logentry' RETURNING "django_content_type"."id"; args=('admin', 'logentry'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'admin' AND "django_content_type"."model" = 'logentry') LIMIT 21; args=('admin', 'logentry'); alias=default
+(0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (1) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(1,); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") SELECT 'Can add log entry', 1, 'add_logentry' UNION ALL SELECT 'Can change log entry', 1, 'change_logentry' UNION ALL SELECT 'Can delete log entry', 1, 'delete_logentry' UNION ALL SELECT 'Can view log entry', 1, 'view_logentry' RETURNING "auth_permission"."id"; args=('Can add log entry', 1, 'add_logentry', 'Can change log entry', 1, 'change_logentry', 'Can delete log entry', 1, 'delete_logentry', 'Can view log entry', 1, 'view_logentry'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'admin'; args=('admin',); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'auth'; args=('auth',); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) INSERT INTO "django_content_type" ("app_label", "model") SELECT 'auth', 'permission' UNION ALL SELECT 'auth', 'group' UNION ALL SELECT 'auth', 'user' RETURNING "django_content_type"."id"; args=('auth', 'permission', 'auth', 'group', 'auth', 'user'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'auth' AND "django_content_type"."model" = 'permission') LIMIT 21; args=('auth', 'permission'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'auth' AND "django_content_type"."model" = 'group') LIMIT 21; args=('auth', 'group'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'auth' AND "django_content_type"."model" = 'user') LIMIT 21; args=('auth', 'user'); alias=default
+(0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (2, 3, 4) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(2, 3, 4); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.001) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") SELECT 'Can add permission', 2, 'add_permission' UNION ALL SELECT 'Can change permission', 2, 'change_permission' UNION ALL SELECT 'Can delete permission', 2, 'delete_permission' UNION ALL SELECT 'Can view permission', 2, 'view_permission' UNION ALL SELECT 'Can add group', 3, 'add_group' UNION ALL SELECT 'Can change group', 3, 'change_group' UNION ALL SELECT 'Can delete group', 3, 'delete_group' UNION ALL SELECT 'Can view group', 3, 'view_group' UNION ALL SELECT 'Can add user', 4, 'add_user' UNION ALL SELECT 'Can change user', 4, 'change_user' UNION ALL SELECT 'Can delete user', 4, 'delete_user' UNION ALL SELECT 'Can view user', 4, 'view_user' RETURNING "auth_permission"."id"; args=('Can add permission', 2, 'add_permission', 'Can change permission', 2, 'change_permission', 'Can delete permission', 2, 'delete_permission', 'Can view permission', 2, 'view_permission', 'Can add group', 3, 'add_group', 'Can change group', 3, 'change_group', 'Can delete group', 3, 'delete_group', 'Can view group', 3, 'view_group', 'Can add user', 4, 'add_user', 'Can change user', 4, 'change_user', 'Can delete user', 4, 'delete_user', 'Can view user', 4, 'view_user'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'auth'; args=('auth',); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'contenttypes'; args=('contenttypes',); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) INSERT INTO "django_content_type" ("app_label", "model") SELECT 'contenttypes', 'contenttype' RETURNING "django_content_type"."id"; args=('contenttypes', 'contenttype'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'contenttypes' AND "django_content_type"."model" = 'contenttype') LIMIT 21; args=('contenttypes', 'contenttype'); alias=default
+(0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (5) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(5,); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") SELECT 'Can add content type', 5, 'add_contenttype' UNION ALL SELECT 'Can change content type', 5, 'change_contenttype' UNION ALL SELECT 'Can delete content type', 5, 'delete_contenttype' UNION ALL SELECT 'Can view content type', 5, 'view_contenttype' RETURNING "auth_permission"."id"; args=('Can add content type', 5, 'add_contenttype', 'Can change content type', 5, 'change_contenttype', 'Can delete content type', 5, 'delete_contenttype', 'Can view content type', 5, 'view_contenttype'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'contenttypes'; args=('contenttypes',); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'sessions'; args=('sessions',); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) INSERT INTO "django_content_type" ("app_label", "model") SELECT 'sessions', 'session' RETURNING "django_content_type"."id"; args=('sessions', 'session'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'sessions' AND "django_content_type"."model" = 'session') LIMIT 21; args=('sessions', 'session'); alias=default
+(0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (6) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(6,); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") SELECT 'Can add session', 6, 'add_session' UNION ALL SELECT 'Can change session', 6, 'change_session' UNION ALL SELECT 'Can delete session', 6, 'delete_session' UNION ALL SELECT 'Can view session', 6, 'view_session' RETURNING "auth_permission"."id"; args=('Can add session', 6, 'add_session', 'Can change session', 6, 'change_session', 'Can delete session', 6, 'delete_session', 'Can view session', 6, 'view_session'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'sessions'; args=('sessions',); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'dashboard'; args=('dashboard',); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) INSERT INTO "django_content_type" ("app_label", "model") SELECT 'dashboard', 'dummy_database' RETURNING "django_content_type"."id"; args=('dashboard', 'dummy_database'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'dashboard' AND "django_content_type"."model" = 'dummy_database') LIMIT 21; args=('dashboard', 'dummy_database'); alias=default
+(0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (7) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(7,); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") SELECT 'Can add dummy_database', 7, 'add_dummy_database' UNION ALL SELECT 'Can change dummy_database', 7, 'change_dummy_database' UNION ALL SELECT 'Can delete dummy_database', 7, 'delete_dummy_database' UNION ALL SELECT 'Can view dummy_database', 7, 'view_dummy_database' RETURNING "auth_permission"."id"; args=('Can add dummy_database', 7, 'add_dummy_database', 'Can change dummy_database', 7, 'change_dummy_database', 'Can delete dummy_database', 7, 'delete_dummy_database', 'Can view dummy_database', 7, 'view_dummy_database'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'dashboard'; args=('dashboard',); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'products'; args=('products',); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) INSERT INTO "django_content_type" ("app_label", "model") SELECT 'products', 'category' UNION ALL SELECT 'products', 'product' RETURNING "django_content_type"."id"; args=('products', 'category', 'products', 'product'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'products' AND "django_content_type"."model" = 'category') LIMIT 21; args=('products', 'category'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'products' AND "django_content_type"."model" = 'product') LIMIT 21; args=('products', 'product'); alias=default
+(0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (8, 9) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(8, 9); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") SELECT 'Can add category', 8, 'add_category' UNION ALL SELECT 'Can change category', 8, 'change_category' UNION ALL SELECT 'Can delete category', 8, 'delete_category' UNION ALL SELECT 'Can view category', 8, 'view_category' UNION ALL SELECT 'Can add product', 9, 'add_product' UNION ALL SELECT 'Can change product', 9, 'change_product' UNION ALL SELECT 'Can delete product', 9, 'delete_product' UNION ALL SELECT 'Can view product', 9, 'view_product' RETURNING "auth_permission"."id"; args=('Can add category', 8, 'add_category', 'Can change category', 8, 'change_category', 'Can delete category', 8, 'delete_category', 'Can view category', 8, 'view_category', 'Can add product', 9, 'add_product', 'Can change product', 9, 'change_product', 'Can delete product', 9, 'delete_product', 'Can view product', 9, 'view_product'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'products'; args=('products',); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'costumer'; args=('costumer',); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) INSERT INTO "django_content_type" ("app_label", "model") SELECT 'costumer', 'gender' UNION ALL SELECT 'costumer', 'costumer' RETURNING "django_content_type"."id"; args=('costumer', 'gender', 'costumer', 'costumer'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'costumer' AND "django_content_type"."model" = 'gender') LIMIT 21; args=('costumer', 'gender'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'costumer' AND "django_content_type"."model" = 'costumer') LIMIT 21; args=('costumer', 'costumer'); alias=default
+(0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (10, 11) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(10, 11); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.000) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") SELECT 'Can add gender', 10, 'add_gender' UNION ALL SELECT 'Can change gender', 10, 'change_gender' UNION ALL SELECT 'Can delete gender', 10, 'delete_gender' UNION ALL SELECT 'Can view gender', 10, 'view_gender' UNION ALL SELECT 'Can add costumer', 11, 'add_costumer' UNION ALL SELECT 'Can change costumer', 11, 'change_costumer' UNION ALL SELECT 'Can delete costumer', 11, 'delete_costumer' UNION ALL SELECT 'Can view costumer', 11, 'view_costumer' RETURNING "auth_permission"."id"; args=('Can add gender', 10, 'add_gender', 'Can change gender', 10, 'change_gender', 'Can delete gender', 10, 'delete_gender', 'Can view gender', 10, 'view_gender', 'Can add costumer', 11, 'add_costumer', 'Can change costumer', 11, 'change_costumer', 'Can delete costumer', 11, 'delete_costumer', 'Can view costumer', 11, 'view_costumer'); alias=default
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'costumer'; args=('costumer',); alias=default

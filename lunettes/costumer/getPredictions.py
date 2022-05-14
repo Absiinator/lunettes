@@ -28,9 +28,6 @@ def get_prediction(image, model):
         (startX, startY) = f[0], f[1]
         (endX, endY) = f[2], f[3]
 
-        # draw rectangle over face
-        cv2.rectangle(frame, (startX,startY), (endX,endY), (0,0,255), 2)
-
         # crop the detected face region
         face_crop = np.copy(frame[startY:endY,startX:endX])
 

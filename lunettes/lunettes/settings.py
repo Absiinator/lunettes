@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-import logging
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -154,32 +153,24 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': f'{BASE_DIR}/logs/debug.log',
+            'filename': 'logs/sql.log',
+        },
+        'file1': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/tensorflow.log',
         },
     },
     'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-        'django.request': {
+        'django.db.backends': {
             'handlers': ['file'],
             'level': 'DEBUG',
             'propagate': True,
         },
         'tensorflow': {
-            'handlers': ['file'],
+            'handlers': ['file1'],
             'level': 'DEBUG',
             'propagate': True,
         }
-    },
-    'formatter': {
-        'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
-        },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        },
     },
 }

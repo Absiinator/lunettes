@@ -13,21 +13,18 @@ from products.models import *
 
 # Create your tests here.
 class DashboardTestCase(TestCase):
-    def test_setUp(self):
-        # need to add path to join pictures on models
-        BASE_DIR = Path(__file__).resolve().parent.parent
 
-        # genders are mentatory to create before anything else/
-        gender1 = Gender.objects.create(name='Male')
-        gender2 = Gender.objects.create(name='Female')
+    def setUp(self):
+        self.BASE_DIR = Path(__file__).resolve().parent.parent
+        self.datapath = os.path.join(self.BASE_DIR, 'lunettes/static/userdatabase/users.csv')
+        self.df = pd.read_csv(self.datapath)
+        self.gender1 = Gender.objects.create(name='Male').save()
+        self.gender2 = Gender.objects.create(name='Female').save()
 
-        gender1.save()
-        gender2.save()
+
+    def test_Imports(self):
         
-        # import and read cv
-        datapath = os.path.join(BASE_DIR, 'lunettes/static/userdatabase/users.csv')
-        df = pd.read_csv(datapath)
-        for index, row in df.iterrows():
+        for index, row in self.df.iterrows():
             gender = Gender.objects.get(name=row['gender'])
 
             costumer = Costumer.objects.create(
@@ -35,9 +32,6 @@ class DashboardTestCase(TestCase):
                 gender =    gender,
             )
                     
-        Dummy_database.objects.create(loaded=True)
         costumer = Costumer.objects.get(id=12)
 
         self.assertEqual(str(costumer), 'Beatrice')
-
-    

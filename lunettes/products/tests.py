@@ -6,42 +6,37 @@ from costumer.models import *
 
 
 # Create your tests here.
-class CRUDTest(TestCase):
+class CategoryTests(TestCase):
 
-    # first test is needed to setup the database
-    def test_CRUD(self):
-        # need to initialize genders in the database to create objects
-        gender1 = Gender.objects.create(name='Male')
-        gender2 = Gender.objects.create(name='Female')
+    def setUp(self):
+        self.gender1 = Gender.objects.create(name='Male').save()
+        self.gender2 = Gender.objects.create(name='Female').save()
 
-        gender1.save()
-        gender2.save()
+    def Test_Category_create(self):
+        self.categorytest = Category.objects.create(name="test").save()
+        self.assertEqual(str(self.categorytest), 'test')
 
-        gender1_loaded = Gender.objects.filter(name='Male')
-        gender2_loaded = Gender.objects.filter(name='Female')
 
-        categorytest = Category.objects.create(name="test")
-        categorytest.save()
-
+class ProductTests(CategoryTests):
+   
+    def setup_Products(self):
         categorytest_loaded = Category.objects.get(name='test')
 
-        self.assertEqual(str(categorytest_loaded), 'test')
+        self.product1 = Product.objects.create(name="test", description="test", price=1.0, category=categorytest_loaded)
+        self.product1.gender.set(self.gender1)
+        
+        self.product2 = Product.objects.create(name='test2', description='test object2', price=100, category=categorytest_loaded)
+        self.product2.gender.set(self.gender2)
 
-        product1 = Product.objects.create(name="test", description="test", price=1.0, category=categorytest_loaded)
-        product1.gender.set(gender1_loaded)
-        product2 = Product.objects.create(name='test2', description='test object2', price=100, category=categorytest_loaded)
-        product2.gender.set(gender2_loaded)
+        self.product1.save()
+        self.product2.save()
 
-        product1.save()
-        product2.save()
+    def Test_Products_read(self):
+        self.assertEqual(str(self.product2.description), 'test object2')
 
-        self.assertEqual(str(product1), 'test')
+    def Test_Products_Modify(self):
+        product = Product.objects.get(id=1)
+        product.name = 'modifiedtest'
+        product.save()
 
-        # modify values on products
-        product1 = Product.objects.get(id=1)
-        product1.name = 'modifiedtest'
-        product1.save()
-
-        self.assertEqual(str(product1), 'modifiedtest')
-        self.assertEqual(str(product2.description), 'test object2')
-        self.assertEqual(str(categorytest), 'test')
+        self.assertEqual(str(product), 'modifiedtest')
